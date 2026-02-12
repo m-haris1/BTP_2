@@ -1,0 +1,84 @@
+{
+  "algorithm": "CKKS",
+  "model_file": "local_HE_model_0x457C45404461f3149772dD4F0775401e23CE4Ccb.bin",
+  "ctx_file": "CKKS_without_priv_key.pkl",
+  "success": false,
+  "error": "decrypt_exception:you need to provide a secret_key",
+  "params_changed": 0,
+  "time_s": 0.4549
+}
+Error: Required modules not found or import failed: No module named 'simple_cnn_config'
+sys.executable: C:\Users\Haris\anaconda3\envs\pqbfl_fix\python.exe
+sys.path (first entries): ['D:\\Haris NSUT\\Semester 7\\BTP\\PQBFL_IMPLE_GIT\\PQBFL-main', 'D:\\Haris NSUT\\Semester 7\\BTP\\PQBFL_IMPLE_GIT\\PQBFL-main\\server\\tools', 'C:\\Users\\Haris\\anaconda3\\envs\\pqbfl_fix\\python310.zip', 'C:\\Users\\Haris\\anaconda3\\envs\\pqbfl_fix\\DLLs', 'C:\\Users\\Haris\\anaconda3\\envs\\pqbfl_fix\\lib', 'C:\\Users\\Haris\\anaconda3\\envs\\pqbfl_fix', 'C:\\Users\\Haris\\anaconda3\\envs\\pqbfl_fix\\lib\\site-packages', 'C:\\Users\\Haris\\anaconda3\\envs\\pqbfl_fix\\lib\\site-packages\\win32']
+{
+  "algorithm": "CKKS",
+  "model_file": "local_HE_model_0x457C45404461f3149772dD4F0775401e23CE4Ccb.bin",
+  "ctx_file": "CKKS_without_priv_key.pkl",
+  "success": false,
+  "error": "decrypt_exception:you need to provide a secret_key",
+  "params_changed": 0,
+  "time_s": 0.6386
+}
+Error: Required modules not found or import failed: No module named 'simple_cnn_config'
+sys.executable: C:\Users\Haris\anaconda3\envs\pqbfl_fix\python.exe
+sys.path (first entries): ['D:\\Haris NSUT\\Semester 7\\BTP\\PQBFL_IMPLE_GIT\\PQBFL-main', 'D:\\Haris NSUT\\Semester 7\\BTP\\PQBFL_IMPLE_GIT\\PQBFL-main\\server\\tools', 'C:\\Users\\Haris\\anaconda3\\envs\\pqbfl_fix\\python310.zip', 'C:\\Users\\Haris\\anaconda3\\envs\\pqbfl_fix\\DLLs', 'C:\\Users\\Haris\\anaconda3\\envs\\pqbfl_fix\\lib', 'C:\\Users\\Haris\\anaconda3\\envs\\pqbfl_fix', 'C:\\Users\\Haris\\anaconda3\\envs\\pqbfl_fix\\lib\\site-packages', 'C:\\Users\\Haris\\anaconda3\\envs\\pqbfl_fix\\lib\\site-packages\\win32']
+{
+  "algorithm": "CKKS",
+  "model_file": "local_HE_model_0x457C45404461f3149772dD4F0775401e23CE4Ccb.bin",
+  "ctx_file": "CKKS_without_priv_key.pkl",
+  "success": false,
+  "error": "decrypt_exception:you need to provide a secret_key",
+  "params_changed": 0,
+  "time_s": 0.382
+}
+Error: Required modules not found or import failed: No module named 'simple_cnn_config'
+sys.executable: C:\Users\Haris\anaconda3\envs\pqbfl_fix\python.exe
+sys.path (first entries): ['D:\\Haris NSUT\\Semester 7\\BTP\\PQBFL_IMPLE_GIT\\PQBFL-main', 'D:\\Haris NSUT\\Semester 7\\BTP\\PQBFL_IMPLE_GIT\\PQBFL-main\\server\\tools', 'C:\\Users\\Haris\\anaconda3\\envs\\pqbfl_fix\\python310.zip', 'C:\\Users\\Haris\\anaconda3\\envs\\pqbfl_fix\\DLLs', 'C:\\Users\\Haris\\anaconda3\\envs\\pqbfl_fix\\lib', 'C:\\Users\\Haris\\anaconda3\\envs\\pqbfl_fix', 'C:\\Users\\Haris\\anaconda3\\envs\\pqbfl_fix\\lib\\site-packages', 'C:\\Users\\Haris\\anaconda3\\envs\\pqbfl_fix\\lib\\site-packages\\win32']
+{
+  "algorithm": "CKKS",
+  "model_file": "local_HE_model_0x457C45404461f3149772dD4F0775401e23CE4Ccb.bin",
+  "ctx_file": "CKKS_without_priv_key.pkl",
+  "success": false,
+  "error": "decrypt_exception:you need to provide a secret_key",
+  "params_changed": 0,
+  "time_s": 0.449
+}
+Error: Required modules not found or import failed: No module named 'simple_cnn_config'
+sys.executable: C:\Users\Haris\anaconda3\envs\pqbfl_fix\python.exe
+sys.path (first entries): ['D:\\Haris NSUT\\Semester 7\\BTP\\PQBFL_IMPLE_GIT\\PQBFL-main', 'D:\\Haris NSUT\\Semester 7\\BTP\\PQBFL_IMPLE_GIT\\PQBFL-main\\server\\tools', 'C:\\Users\\Haris\\anaconda3\\envs\\pqbfl_fix\\python310.zip', 'C:\\Users\\Haris\\anaconda3\\envs\\pqbfl_fix\\DLLs', 'C:\\Users\\Haris\\anaconda3\\envs\\pqbfl_fix\\lib', 'C:\\Users\\Haris\\anaconda3\\envs\\pqbfl_fix', 'C:\\Users\\Haris\\anaconda3\\envs\\pqbfl_fix\\lib\\site-packages', 'C:\\Users\\Haris\\anaconda3\\envs\\pqbfl_fix\\lib\\site-packages\\win32']
+{
+  "algorithm": "CKKS",
+  "model_file": "local_HE_model_0x457C45404461f3149772dD4F0775401e23CE4Ccb.bin",
+  "ctx_file": "CKKS_without_priv_key.pkl",
+  "success": false,
+  "error": "decrypt_exception:you need to provide a secret_key",
+  "params_changed": 0,
+  "time_s": 0.41
+}
+Error: Required modules not found or import failed: No module named 'simple_cnn_config'
+sys.executable: C:\Users\Haris\anaconda3\envs\pqbfl_fix\python.exe
+sys.path (first entries): ['D:\\Haris NSUT\\Semester 7\\BTP\\PQBFL_IMPLE_GIT\\PQBFL-main', 'D:\\Haris NSUT\\Semester 7\\BTP\\PQBFL_IMPLE_GIT\\PQBFL-main\\server\\tools', 'C:\\Users\\Haris\\anaconda3\\envs\\pqbfl_fix\\python310.zip', 'C:\\Users\\Haris\\anaconda3\\envs\\pqbfl_fix\\DLLs', 'C:\\Users\\Haris\\anaconda3\\envs\\pqbfl_fix\\lib', 'C:\\Users\\Haris\\anaconda3\\envs\\pqbfl_fix', 'C:\\Users\\Haris\\anaconda3\\envs\\pqbfl_fix\\lib\\site-packages', 'C:\\Users\\Haris\\anaconda3\\envs\\pqbfl_fix\\lib\\site-packages\\win32']
+{
+  "algorithm": "CKKS",
+  "model_file": "local_HE_model_0x457C45404461f3149772dD4F0775401e23CE4Ccb.bin",
+  "ctx_file": "CKKS_without_priv_key.pkl",
+  "success": false,
+  "error": "decrypt_exception:you need to provide a secret_key",
+  "params_changed": 0,
+  "time_s": 0.393
+}
+Error: Required modules not found or import failed: No module named 'simple_cnn_config'
+sys.executable: C:\Users\Haris\anaconda3\envs\pqbfl_fix\python.exe
+sys.path (first entries): ['D:\\Haris NSUT\\Semester 7\\BTP\\PQBFL_IMPLE_GIT\\PQBFL-main', 'D:\\Haris NSUT\\Semester 7\\BTP\\PQBFL_IMPLE_GIT\\PQBFL-main\\server\\tools', 'C:\\Users\\Haris\\anaconda3\\envs\\pqbfl_fix\\python310.zip', 'C:\\Users\\Haris\\anaconda3\\envs\\pqbfl_fix\\DLLs', 'C:\\Users\\Haris\\anaconda3\\envs\\pqbfl_fix\\lib', 'C:\\Users\\Haris\\anaconda3\\envs\\pqbfl_fix', 'C:\\Users\\Haris\\anaconda3\\envs\\pqbfl_fix\\lib\\site-packages', 'C:\\Users\\Haris\\anaconda3\\envs\\pqbfl_fix\\lib\\site-packages\\win32']
+{
+  "algorithm": "CKKS",
+  "model_file": "local_HE_model_0x457C45404461f3149772dD4F0775401e23CE4Ccb.bin",
+  "ctx_file": "CKKS_without_priv_key.pkl",
+  "success": false,
+  "error": "decrypt_exception:you need to provide a secret_key",
+  "params_changed": 0,
+  "time_s": 0.3068
+}
+Error: Required modules not found or import failed: No module named 'simple_cnn_config'
+sys.executable: C:\Users\Haris\anaconda3\envs\pqbfl_fix\python.exe
+sys.path (first entries): ['D:\\Haris NSUT\\Semester 7\\BTP\\PQBFL_IMPLE_GIT\\PQBFL-main', 'D:\\Haris NSUT\\Semester 7\\BTP\\PQBFL_IMPLE_GIT\\PQBFL-main\\server\\tools', 'C:\\Users\\Haris\\anaconda3\\envs\\pqbfl_fix\\python310.zip', 'C:\\Users\\Haris\\anaconda3\\envs\\pqbfl_fix\\DLLs', 'C:\\Users\\Haris\\anaconda3\\envs\\pqbfl_fix\\lib', 'C:\\Users\\Haris\\anaconda3\\envs\\pqbfl_fix', 'C:\\Users\\Haris\\anaconda3\\envs\\pqbfl_fix\\lib\\site-packages', 'C:\\Users\\Haris\\anaconda3\\envs\\pqbfl_fix\\lib\\site-packages\\win32']

@@ -1,0 +1,9 @@
+Server
+
+Etherium Address - 0x3Ff6Bb325219D6e80Bf8D5f4F66d45A8a6fc6fB2
+Private Key - 0x39c3977510ca100bb86d5f0093a89168d46d5aa02365a011f8370e38eb82e94c
+contract address given by blockchain - 0x49699FBA948a99531Ea7B0766C084dC9baC6B274
+
+IPFS-> 12D3KooWSmEkhsPLzswofknu78TAnRnBrDLH3YSR47SYYWsezcBC
+
+

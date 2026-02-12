@@ -1,0 +1,91 @@
+Traceback (most recent call last):
+  File "D:\Haris NSUT\Semester 7\BTP\PQBFL_IMPLE_GIT\PQBFL-main\server\tools\he_decrypt_attempt.py", line 104, in attempt_decrypt
+    model_after = HE_decrypt_model(enc_weights, model, ctx, algorithm, metadata)
+  File "D:\Haris NSUT\Semester 7\BTP\PQBFL_IMPLE_GIT\PQBFL-main\utils.py", line 155, in HE_decrypt_model
+    context.generate_galois_keys()
+  File "C:\Users\Haris\anaconda3\envs\pqbfl_fix\lib\site-packages\tenseal\enc_context.py", line 238, in generate_galois_keys
+    self.data.generate_galois_keys()
+ValueError: you need to provide a secret_key
+
+Traceback (most recent call last):
+  File "D:\Haris NSUT\Semester 7\BTP\PQBFL_IMPLE_GIT\PQBFL-main\server\tools\he_decrypt_attempt.py", line 33, in <module>
+    from simple_cnn_config import SimpleCNN
+ModuleNotFoundError: No module named 'simple_cnn_config'
+Traceback (most recent call last):
+  File "D:\Haris NSUT\Semester 7\BTP\PQBFL_IMPLE_GIT\PQBFL-main\server\tools\he_decrypt_attempt.py", line 104, in attempt_decrypt
+    model_after = HE_decrypt_model(enc_weights, model, ctx, algorithm, metadata)
+  File "D:\Haris NSUT\Semester 7\BTP\PQBFL_IMPLE_GIT\PQBFL-main\utils.py", line 155, in HE_decrypt_model
+    context.generate_galois_keys()
+  File "C:\Users\Haris\anaconda3\envs\pqbfl_fix\lib\site-packages\tenseal\enc_context.py", line 238, in generate_galois_keys
+    self.data.generate_galois_keys()
+ValueError: you need to provide a secret_key
+
+Traceback (most recent call last):
+  File "D:\Haris NSUT\Semester 7\BTP\PQBFL_IMPLE_GIT\PQBFL-main\server\tools\he_decrypt_attempt.py", line 33, in <module>
+    from simple_cnn_config import SimpleCNN
+ModuleNotFoundError: No module named 'simple_cnn_config'
+Traceback (most recent call last):
+  File "D:\Haris NSUT\Semester 7\BTP\PQBFL_IMPLE_GIT\PQBFL-main\server\tools\he_decrypt_attempt.py", line 104, in attempt_decrypt
+    model_after = HE_decrypt_model(enc_weights, model, ctx, algorithm, metadata)
+  File "D:\Haris NSUT\Semester 7\BTP\PQBFL_IMPLE_GIT\PQBFL-main\utils.py", line 161, in HE_decrypt_model
+    context.generate_galois_keys()
+  File "C:\Users\Haris\anaconda3\envs\pqbfl_fix\lib\site-packages\tenseal\enc_context.py", line 238, in generate_galois_keys
+    self.data.generate_galois_keys()
+ValueError: you need to provide a secret_key
+
+Traceback (most recent call last):
+  File "D:\Haris NSUT\Semester 7\BTP\PQBFL_IMPLE_GIT\PQBFL-main\server\tools\he_decrypt_attempt.py", line 33, in <module>
+    from simple_cnn_config import SimpleCNN
+ModuleNotFoundError: No module named 'simple_cnn_config'
+Traceback (most recent call last):
+  File "D:\Haris NSUT\Semester 7\BTP\PQBFL_IMPLE_GIT\PQBFL-main\server\tools\he_decrypt_attempt.py", line 104, in attempt_decrypt
+    model_after = HE_decrypt_model(enc_weights, model, ctx, algorithm, metadata)
+  File "D:\Haris NSUT\Semester 7\BTP\PQBFL_IMPLE_GIT\PQBFL-main\utils.py", line 161, in HE_decrypt_model
+    context.generate_galois_keys()
+  File "C:\Users\Haris\anaconda3\envs\pqbfl_fix\lib\site-packages\tenseal\enc_context.py", line 238, in generate_galois_keys
+    self.data.generate_galois_keys()
+ValueError: you need to provide a secret_key
+
+Traceback (most recent call last):
+  File "D:\Haris NSUT\Semester 7\BTP\PQBFL_IMPLE_GIT\PQBFL-main\server\tools\he_decrypt_attempt.py", line 33, in <module>
+    from simple_cnn_config import SimpleCNN
+ModuleNotFoundError: No module named 'simple_cnn_config'
+Traceback (most recent call last):
+  File "D:\Haris NSUT\Semester 7\BTP\PQBFL_IMPLE_GIT\PQBFL-main\server\tools\he_decrypt_attempt.py", line 104, in attempt_decrypt
+    model_after = HE_decrypt_model(enc_weights, model, ctx, algorithm, metadata)
+  File "D:\Haris NSUT\Semester 7\BTP\PQBFL_IMPLE_GIT\PQBFL-main\utils.py", line 161, in HE_decrypt_model
+    context.generate_galois_keys()
+  File "C:\Users\Haris\anaconda3\envs\pqbfl_fix\lib\site-packages\tenseal\enc_context.py", line 238, in generate_galois_keys
+    self.data.generate_galois_keys()
+ValueError: you need to provide a secret_key
+
+Traceback (most recent call last):
+  File "D:\Haris NSUT\Semester 7\BTP\PQBFL_IMPLE_GIT\PQBFL-main\server\tools\he_decrypt_attempt.py", line 33, in <module>
+    from simple_cnn_config import SimpleCNN
+ModuleNotFoundError: No module named 'simple_cnn_config'
+Traceback (most recent call last):
+  File "D:\Haris NSUT\Semester 7\BTP\PQBFL_IMPLE_GIT\PQBFL-main\server\tools\he_decrypt_attempt.py", line 104, in attempt_decrypt
+    model_after = HE_decrypt_model(enc_weights, model, ctx, algorithm, metadata)
+  File "D:\Haris NSUT\Semester 7\BTP\PQBFL_IMPLE_GIT\PQBFL-main\utils.py", line 161, in HE_decrypt_model
+    context.generate_galois_keys()
+  File "C:\Users\Haris\anaconda3\envs\pqbfl_fix\lib\site-packages\tenseal\enc_context.py", line 238, in generate_galois_keys
+    self.data.generate_galois_keys()
+ValueError: you need to provide a secret_key
+
+Traceback (most recent call last):
+  File "D:\Haris NSUT\Semester 7\BTP\PQBFL_IMPLE_GIT\PQBFL-main\server\tools\he_decrypt_attempt.py", line 33, in <module>
+    from simple_cnn_config import SimpleCNN
+ModuleNotFoundError: No module named 'simple_cnn_config'
+Traceback (most recent call last):
+  File "D:\Haris NSUT\Semester 7\BTP\PQBFL_IMPLE_GIT\PQBFL-main\server\tools\he_decrypt_attempt.py", line 104, in attempt_decrypt
+    model_after = HE_decrypt_model(enc_weights, model, ctx, algorithm, metadata)
+  File "D:\Haris NSUT\Semester 7\BTP\PQBFL_IMPLE_GIT\PQBFL-main\utils.py", line 161, in HE_decrypt_model
+    context.generate_galois_keys()
+  File "C:\Users\Haris\anaconda3\envs\pqbfl_fix\lib\site-packages\tenseal\enc_context.py", line 238, in generate_galois_keys
+    self.data.generate_galois_keys()
+ValueError: you need to provide a secret_key
+
+Traceback (most recent call last):
+  File "D:\Haris NSUT\Semester 7\BTP\PQBFL_IMPLE_GIT\PQBFL-main\server\tools\he_decrypt_attempt.py", line 33, in <module>
+    from simple_cnn_config import SimpleCNN
+ModuleNotFoundError: No module named 'simple_cnn_config'

@@ -1,0 +1,62 @@
+Problem : Classical cryptography is breakable
+
+Solution :
+Combine Classical and Kyber 
+Used ratechery.
+Use blockchain for ligther task
+Large model stays off the chain.
+
+
+RETACHING : Change the key repeatetlively .
+
+Phase 1: 
+Model Aggregator sleects a normal key and cryptographic key . Now it pushes the hash of these key along with some metadata to the blockchain.
+
+
+Phase 2:
+Key generation :-
+They want to create a root key this root key depends combining two separate shared secret.
+    * One from the traditional eleptical curve.
+    * One from post quantum crytography.
+
+    SSe(traditional secret) -> Create using ECDH 
+                                Alice(client) uses her private key and bob's public
+                                Bob ( client ) uses her private key and alice's public.
+
+    SSk (PQC-Secret) -> Alice uses bob's public key for encapsulation -> SSk and cipher text.
+
+    -> Bob uses his private key and alice ciphertext to recover SSk.
+
+
+So now both alice bob does have:-
+SSe (traditional) 
+SSk (PQC Secret)
+(Observe that both have same set of SSe, SSk)
+
+Combine secret key to get root key.
+RK1 = KDFa(SSe,SSk,0x00)
+Since they both follow same procedure , they derived exact same root key.
+
+
+
+Phase 2 :-
+
+Small hybrid communication approach Small critical metadata goes on-chain for transperency and auditing.
+Large encrypted model gets off chain.
+
+
+(i) - Publish Task (server participant):-
+    a) Derive Key -> Bob does it :-
+    create a new round specific model key.(each eepoch has get)
+    b) On-chain Transaction ->
+        Bob -> public taks Transaction to the blockchain
+        Transaction -> * Round Number 
+                      * Project / Task Identifier.
+                      * Deadline 
+                      * Hash of global model info
+    c) Off-Chain-Message -> Bob encrypt global model and transaction detail using mdoel key and transaction detail using model key.
+                            He than sign it with ECDSA private key and send it off chain.
+(ii) - Update model (participant -> server)
+    * Participant trains her local model and send update back to server(client).
+    * Alice recieve the model off-chain verify server's signature , decrpyt the global mdoel using model key.
+    * Now she make transaction on blockchain and sends update model off chain
