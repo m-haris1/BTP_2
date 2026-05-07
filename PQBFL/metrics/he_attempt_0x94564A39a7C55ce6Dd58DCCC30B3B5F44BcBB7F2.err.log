@@ -1,0 +1,135 @@
+Traceback (most recent call last):
+  File "D:\Haris NSUT\Sem 8\PQBFL-IPFS\PQBFL\server\tools\he_decrypt_attempt.py", line 104, in attempt_decrypt
+    model_after = HE_decrypt_model(enc_weights, model, ctx, algorithm, metadata)
+  File "D:\Haris NSUT\Sem 8\PQBFL-IPFS\PQBFL\utils.py", line 172, in HE_decrypt_model
+    dec_weight = np.array(encrypted_weight.decrypt())
+  File "C:\Users\Haris\anaconda3\envs\pqbfl_fix\lib\site-packages\tenseal\tensors\ckksvector.py", line 50, in decrypt
+    return self._decrypt(secret_key=secret_key)
+  File "C:\Users\Haris\anaconda3\envs\pqbfl_fix\lib\site-packages\tenseal\tensors\abstract_tensor.py", line 85, in _decrypt
+    return self.data.decrypt()
+ValueError: the current context of the tensor doesn't hold a secret_key, please provide one as argument
+
+Traceback (most recent call last):
+  File "D:\Haris NSUT\Sem 8\PQBFL-IPFS\PQBFL\server\tools\he_decrypt_attempt.py", line 33, in <module>
+    from simple_cnn_config import SimpleCNN
+ModuleNotFoundError: No module named 'simple_cnn_config'
+Traceback (most recent call last):
+  File "D:\Haris NSUT\Sem 8\PQBFL-IPFS\PQBFL\server\tools\he_decrypt_attempt.py", line 104, in attempt_decrypt
+    model_after = HE_decrypt_model(enc_weights, model, ctx, algorithm, metadata)
+  File "D:\Haris NSUT\Sem 8\PQBFL-IPFS\PQBFL\utils.py", line 172, in HE_decrypt_model
+    dec_weight = np.array(encrypted_weight.decrypt())
+  File "C:\Users\Haris\anaconda3\envs\pqbfl_fix\lib\site-packages\tenseal\tensors\ckksvector.py", line 50, in decrypt
+    return self._decrypt(secret_key=secret_key)
+  File "C:\Users\Haris\anaconda3\envs\pqbfl_fix\lib\site-packages\tenseal\tensors\abstract_tensor.py", line 85, in _decrypt
+    return self.data.decrypt()
+ValueError: the current context of the tensor doesn't hold a secret_key, please provide one as argument
+
+Traceback (most recent call last):
+  File "D:\Haris NSUT\Sem 8\PQBFL-IPFS\PQBFL\server\tools\he_decrypt_attempt.py", line 33, in <module>
+    from simple_cnn_config import SimpleCNN
+ModuleNotFoundError: No module named 'simple_cnn_config'
+Traceback (most recent call last):
+  File "D:\Haris NSUT\Sem 8\PQBFL-IPFS\PQBFL\server\tools\he_decrypt_attempt.py", line 104, in attempt_decrypt
+    model_after = HE_decrypt_model(enc_weights, model, ctx, algorithm, metadata)
+  File "D:\Haris NSUT\Sem 8\PQBFL-IPFS\PQBFL\utils.py", line 172, in HE_decrypt_model
+    dec_weight = np.array(encrypted_weight.decrypt())
+  File "C:\Users\Haris\anaconda3\envs\pqbfl_fix\lib\site-packages\tenseal\tensors\ckksvector.py", line 50, in decrypt
+    return self._decrypt(secret_key=secret_key)
+  File "C:\Users\Haris\anaconda3\envs\pqbfl_fix\lib\site-packages\tenseal\tensors\abstract_tensor.py", line 85, in _decrypt
+    return self.data.decrypt()
+ValueError: the current context of the tensor doesn't hold a secret_key, please provide one as argument
+
+Traceback (most recent call last):
+  File "D:\Haris NSUT\Sem 8\PQBFL-IPFS\PQBFL\server\tools\he_decrypt_attempt.py", line 33, in <module>
+    from simple_cnn_config import SimpleCNN
+ModuleNotFoundError: No module named 'simple_cnn_config'
+Traceback (most recent call last):
+  File "D:\Haris NSUT\Sem 8\PQBFL-IPFS\PQBFL\server\tools\he_decrypt_attempt.py", line 104, in attempt_decrypt
+    model_after = HE_decrypt_model(enc_weights, model, ctx, algorithm, metadata)
+  File "D:\Haris NSUT\Sem 8\PQBFL-IPFS\PQBFL\utils.py", line 172, in HE_decrypt_model
+    dec_weight = np.array(encrypted_weight.decrypt())
+  File "C:\Users\Haris\anaconda3\envs\pqbfl_fix\lib\site-packages\tenseal\tensors\ckksvector.py", line 50, in decrypt
+    return self._decrypt(secret_key=secret_key)
+  File "C:\Users\Haris\anaconda3\envs\pqbfl_fix\lib\site-packages\tenseal\tensors\abstract_tensor.py", line 85, in _decrypt
+    return self.data.decrypt()
+ValueError: the current context of the tensor doesn't hold a secret_key, please provide one as argument
+
+Traceback (most recent call last):
+  File "D:\Haris NSUT\Sem 8\PQBFL-IPFS\PQBFL\server\tools\he_decrypt_attempt.py", line 33, in <module>
+    from simple_cnn_config import SimpleCNN
+ModuleNotFoundError: No module named 'simple_cnn_config'
+Traceback (most recent call last):
+  File "D:\Haris NSUT\Sem 8\PQBFL-IPFS\PQBFL\server\tools\he_decrypt_attempt.py", line 104, in attempt_decrypt
+    model_after = HE_decrypt_model(enc_weights, model, ctx, algorithm, metadata)
+  File "D:\Haris NSUT\Sem 8\PQBFL-IPFS\PQBFL\utils.py", line 172, in HE_decrypt_model
+    dec_weight = np.array(encrypted_weight.decrypt())
+  File "C:\Users\Haris\anaconda3\envs\pqbfl_fix\lib\site-packages\tenseal\tensors\ckksvector.py", line 50, in decrypt
+    return self._decrypt(secret_key=secret_key)
+  File "C:\Users\Haris\anaconda3\envs\pqbfl_fix\lib\site-packages\tenseal\tensors\abstract_tensor.py", line 85, in _decrypt
+    return self.data.decrypt()
+ValueError: the current context of the tensor doesn't hold a secret_key, please provide one as argument
+
+Traceback (most recent call last):
+  File "D:\Haris NSUT\Sem 8\PQBFL-IPFS\PQBFL\server\tools\he_decrypt_attempt.py", line 33, in <module>
+    from simple_cnn_config import SimpleCNN
+ModuleNotFoundError: No module named 'simple_cnn_config'
+Traceback (most recent call last):
+  File "D:\Haris NSUT\Sem 8\PQBFL-IPFS\PQBFL\server\tools\he_decrypt_attempt.py", line 104, in attempt_decrypt
+    model_after = HE_decrypt_model(enc_weights, model, ctx, algorithm, metadata)
+  File "D:\Haris NSUT\Sem 8\PQBFL-IPFS\PQBFL\utils.py", line 172, in HE_decrypt_model
+    dec_weight = np.array(encrypted_weight.decrypt())
+  File "C:\Users\Haris\anaconda3\envs\pqbfl_fix\lib\site-packages\tenseal\tensors\ckksvector.py", line 50, in decrypt
+    return self._decrypt(secret_key=secret_key)
+  File "C:\Users\Haris\anaconda3\envs\pqbfl_fix\lib\site-packages\tenseal\tensors\abstract_tensor.py", line 85, in _decrypt
+    return self.data.decrypt()
+ValueError: the current context of the tensor doesn't hold a secret_key, please provide one as argument
+
+Traceback (most recent call last):
+  File "D:\Haris NSUT\Sem 8\PQBFL-IPFS\PQBFL\server\tools\he_decrypt_attempt.py", line 33, in <module>
+    from simple_cnn_config import SimpleCNN
+ModuleNotFoundError: No module named 'simple_cnn_config'
+Traceback (most recent call last):
+  File "D:\Haris NSUT\Sem 8\PQBFL-IPFS\PQBFL\server\tools\he_decrypt_attempt.py", line 104, in attempt_decrypt
+    model_after = HE_decrypt_model(enc_weights, model, ctx, algorithm, metadata)
+  File "D:\Haris NSUT\Sem 8\PQBFL-IPFS\PQBFL\utils.py", line 172, in HE_decrypt_model
+    dec_weight = np.array(encrypted_weight.decrypt())
+  File "C:\Users\Haris\anaconda3\envs\pqbfl_fix\lib\site-packages\tenseal\tensors\ckksvector.py", line 50, in decrypt
+    return self._decrypt(secret_key=secret_key)
+  File "C:\Users\Haris\anaconda3\envs\pqbfl_fix\lib\site-packages\tenseal\tensors\abstract_tensor.py", line 85, in _decrypt
+    return self.data.decrypt()
+ValueError: the current context of the tensor doesn't hold a secret_key, please provide one as argument
+
+Traceback (most recent call last):
+  File "D:\Haris NSUT\Sem 8\PQBFL-IPFS\PQBFL\server\tools\he_decrypt_attempt.py", line 33, in <module>
+    from simple_cnn_config import SimpleCNN
+ModuleNotFoundError: No module named 'simple_cnn_config'
+Traceback (most recent call last):
+  File "D:\Haris NSUT\Sem 8\PQBFL-IPFS\PQBFL\server\tools\he_decrypt_attempt.py", line 104, in attempt_decrypt
+    model_after = HE_decrypt_model(enc_weights, model, ctx, algorithm, metadata)
+  File "D:\Haris NSUT\Sem 8\PQBFL-IPFS\PQBFL\utils.py", line 172, in HE_decrypt_model
+    dec_weight = np.array(encrypted_weight.decrypt())
+  File "C:\Users\Haris\anaconda3\envs\pqbfl_fix\lib\site-packages\tenseal\tensors\ckksvector.py", line 50, in decrypt
+    return self._decrypt(secret_key=secret_key)
+  File "C:\Users\Haris\anaconda3\envs\pqbfl_fix\lib\site-packages\tenseal\tensors\abstract_tensor.py", line 85, in _decrypt
+    return self.data.decrypt()
+ValueError: the current context of the tensor doesn't hold a secret_key, please provide one as argument
+
+Traceback (most recent call last):
+  File "D:\Haris NSUT\Sem 8\PQBFL-IPFS\PQBFL\server\tools\he_decrypt_attempt.py", line 33, in <module>
+    from simple_cnn_config import SimpleCNN
+ModuleNotFoundError: No module named 'simple_cnn_config'
+Traceback (most recent call last):
+  File "D:\Haris NSUT\Sem 8\PQBFL-IPFS\PQBFL\server\tools\he_decrypt_attempt.py", line 104, in attempt_decrypt
+    model_after = HE_decrypt_model(enc_weights, model, ctx, algorithm, metadata)
+  File "D:\Haris NSUT\Sem 8\PQBFL-IPFS\PQBFL\utils.py", line 172, in HE_decrypt_model
+    dec_weight = np.array(encrypted_weight.decrypt())
+  File "C:\Users\Haris\anaconda3\envs\pqbfl_fix\lib\site-packages\tenseal\tensors\ckksvector.py", line 50, in decrypt
+    return self._decrypt(secret_key=secret_key)
+  File "C:\Users\Haris\anaconda3\envs\pqbfl_fix\lib\site-packages\tenseal\tensors\abstract_tensor.py", line 85, in _decrypt
+    return self.data.decrypt()
+ValueError: the current context of the tensor doesn't hold a secret_key, please provide one as argument
+
+Traceback (most recent call last):
+  File "D:\Haris NSUT\Sem 8\PQBFL-IPFS\PQBFL\server\tools\he_decrypt_attempt.py", line 33, in <module>
+    from simple_cnn_config import SimpleCNN
+ModuleNotFoundError: No module named 'simple_cnn_config'

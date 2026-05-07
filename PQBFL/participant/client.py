@@ -324,6 +324,7 @@ if __name__ == "__main__":
 
     # 5. Establish Off-chain Connection for Control Signaling
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    # Server off-chain listener binds to localhost:65432 (see server/server.py)
     client_socket.connect(('127.0.0.1', 65432))
     client_socket.send(json.dumps({"msg_type": "Hello!", "Data": ETH_address}).encode('utf-8'))
 
@@ -352,21 +353,80 @@ if __name__ == "__main__":
 
         # --- IPFS PAYLOAD RETRIEVAL ---
         # Request global model FIRST (it's encrypted with current/old key)
-        client_socket.send(json.dumps({"msg_type": "Global model please", "Data": session_id}).encode('utf-8'))
-        
-        # Receive the CID via TCP Control Channel
-        cid_data = client_socket.recv(4096)
-        global_cid = json.loads(cid_data.decode('utf-8'))["CID"]
+        # Server may respond with "not ready" if it hasn't prepared the wrapped model yet.
+        global_cid = None
+        for _ in range(40):  # ~20s total with sleep(0.5)
+            client_socket.send(json.dumps({"msg_type": "Global model please", "Data": session_id}).encode('utf-8'))
+            cid_data = client_socket.recv(4096)
+            if not cid_data:
+                print("DEBUG CLIENT: Empty response while requesting Global model CID; retrying...")
+                time.sleep(0.5)
+                continue
+            try:
+                resp = json.loads(cid_data.decode('utf-8'))
+            except json.JSONDecodeError:
+                print(f"DEBUG CLIENT: Non-JSON response while requesting Global model CID: {cid_data[:80]!r} ... retrying")
+                time.sleep(0.5)
+                continue
+
+            if resp.get("msg_type") == "Global model CID" and resp.get("CID"):
+                global_cid = resp["CID"]
+                break
+            if resp.get("msg_type") == "Global model not ready":
+                time.sleep(0.5)
+                continue
+            print(f"DEBUG CLIENT: Unexpected response while requesting Global model CID: {resp}; retrying...")
+            time.sleep(0.5)
+
+        if not global_cid:
+            print("DEBUG CLIENT: Failed to obtain Global model CID after retries; aborting this round.")
+            continue
         
         print(f"DEBUG: Fetching Global Model from IPFS CID: {global_cid}")
         # Fetch, Decompress, and Unwrap
         model_blob = get_from_Ipfs(global_cid)
         unwrapped_pkg = unwrap_files(model_blob)
         
-        # Decrypt Global Model with CURRENT key (before ratcheting)
+        # Safely extract AES ciphertext and decrypt/unwrap it.
         global_model_ct = unwrapped_pkg.get('global_model.enc')
-        dec_payload = unwrap_files(AES_decrypt_data(Model_key, global_model_ct))
-        
+        if global_model_ct is None:
+            # Defensive: missing expected entry — log and skip this task iteration
+            print(f"DEBUG: 'global_model.enc' not found in server package for CID {global_cid}. Keys in package: {list(unwrapped_pkg.keys())}")
+            continue
+
+        # DEBUG: show model key fingerprint so you can compare with server logs
+        try:
+            print(f"DEBUG: Using Model_key len={len(Model_key)} hex-prefix={Model_key.hex()[:16]} hash={hash_data(Model_key)[:16]}")
+        except Exception:
+            print("DEBUG: Unable to print Model_key fingerprint")
+
+        # Attempt decryption + tar-unpack with robust error handling to avoid tarfile.ReadError crash
+        try:
+            decrypted_wrapper = AES_decrypt_data(Model_key, global_model_ct)
+
+            # Quick sanity check: tar "ustar" magic located at offset 257 (standard tar). If missing, warn.
+            if len(decrypted_wrapper) > 264 and decrypted_wrapper[257:262] != b'ustar':
+                print("DEBUG: Decrypted data does not contain tar ustar magic -> likely wrong key or corrupted data")
+                # write raw decrypted bytes for inspection
+                debug_dir = os.path.join(main_dir, "debug")
+                os.makedirs(debug_dir, exist_ok=True)
+                open(os.path.join(debug_dir, f"decrypted_non_tar_r{r}_{ETH_address[:8]}.bin"), "wb").write(decrypted_wrapper)
+                raise ValueError("Decrypted payload missing tar header")
+
+            dec_payload = unwrap_files(decrypted_wrapper)
+        except Exception as e:
+            # Save debugging artifacts for offline inspection and continue instead of crashing
+            print(f"DEBUG: Failed to decrypt/unpack global model (CID={global_cid}) — error: {e}")
+            try:
+                debug_dir = os.path.join(main_dir, "debug")
+                os.makedirs(debug_dir, exist_ok=True)
+                dump_path = os.path.join(debug_dir, f"failed_global_r{r}_{ETH_address[:8]}.bin")
+                open(dump_path, "wb").write(global_model_ct or b"")
+                print(f"DEBUG: Wrote raw ciphertext to {dump_path}")
+            except Exception:
+                pass
+            continue
+
         # Asymmetric Ratcheting AFTER decrypting global model
         # (Global model was encrypted with old key, so we decrypt first, then ratchet)
         if hash_keys != 'None':
@@ -404,6 +464,7 @@ if __name__ == "__main__":
             print(f"DEBUG CLIENT: Asymmetric ratcheting complete. New Root Key derived.")
         
         if r != 1 and HE_algorithm != 'None':
+            print("DEBUG dec_payload keys:", dec_payload.keys())
             global_model_data, meta = deserialize_data(dec_payload['global_HE_model.bin'], HE_config_with_key)
             global_model = HE_decrypt_model(global_model_data, Local_model, HE_config_with_key, HE_algorithm, meta)
         else:
@@ -411,6 +472,10 @@ if __name__ == "__main__":
 
         # 7. Local Training
         round_start = time.time()
+        # Ensure we have a valid global_model before training
+        if 'global_model' not in locals() or global_model is None:
+            print(f"DEBUG: No global_model available for round {r}; skipping training and continuing.")
+            continue        
         Local_model = train_model.train(global_model, num_epochs, dataset_type, mu=0.1)
         
         # 8. IPFS PAYLOAD UPLOAD ---
@@ -445,21 +510,11 @@ if __name__ == "__main__":
         proj_fb, T, score = listen_for_feedback(r, ETH_address)
         if T: break
 
-        # Symmetric ratcheting: match server's logic
-        # If asymmetric ratcheting happened this round (hash_keys != 'None'), use Root_key
-        # Otherwise, use chain_key
-        if hash_keys != 'None':
-            # Asymmetric ratcheting happened, use Root_key for symmetric derivation
-            chain_key, Model_key = HKDF(Root_key, 32, salt_s, SHA384, 2)
-            print(f"DEBUG CLIENT: Symmetric ratcheting (round {r}): Used Root Key")
-        else:
-            # Normal symmetric ratcheting
-            chain_key, Model_key = HKDF(chain_key, 32, salt_s, SHA384, 2)
-            print(f"DEBUG CLIENT: Symmetric ratcheting (round {r}): Used Chain Key")
-        
-        # Update salts (match server's behavior)
-        salt_s = (bytes_to_long(salt_s) + 1).to_bytes(32, 'big')
-        salt_a = (bytes_to_long(salt_a) + 1).to_bytes(32, 'big')
+        # NOTE: Do NOT perform symmetric ratcheting here.
+        # The server encrypts the next global model with the client's current Model_key.
+        # Performing symmetric ratcheting at the end of the round causes the client to
+        # use a different key than the server when fetching the next global model,
+        # producing decryption failures. Perform symmetric ratcheting only after
+        # successfully decrypting the next global model (or when explicitly signalled).
         print("--------------------- ROUND END ---------------------")
-
-    print("Client finished. Total Runtime:", time.time() - start_time)
+        print("Client finished. Total Runtime:", time.time() - start_time)

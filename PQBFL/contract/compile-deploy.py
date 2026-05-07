@@ -90,6 +90,7 @@ transaction = contract.constructor().build_transaction({
 })
 
 signed_tx = web3.eth.account.sign_transaction(transaction, private_key)
+# print(signed_tx)
 tx_hash = web3.eth.send_raw_transaction(signed_tx.rawTransaction)
 
 receipt = web3.eth.wait_for_transaction_receipt(tx_hash)

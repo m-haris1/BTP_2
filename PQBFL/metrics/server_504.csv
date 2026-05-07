@@ -1,0 +1,4 @@
+timestamp,project_id,phase,registration_tx_time_s,initial_model_ipfs_cid,initial_keys_hash
+1770884008,504,register_project,0.0963,Qma5ipdLhC3At4c2Wck8eXsnk8ikBuPn6DsasdHqQS7dya,601b94baf6f9213a847c09c39a62892f3d65f79fb46c9a3c4625cf6554b2c528
+1770884011,504,publish,1,0.0507,Qma5ipdLhC3At4c2Wck8eXsnk8ikBuPn6DsasdHqQS7dya,symm
+1770884030,504,aggregate,1,2.9265,1,QmbTG4ds31RK7xtjc3GounJkV6BiV2BRWyGXiGexxXmWf1,0.0

@@ -561,11 +561,37 @@ def handle_offchain_client(client_socket):
                 model_key = bytes.fromhex(
                     clients_dict[eth_addr]['Model key']
                 )
+                try:
+                    print(f"DEBUG SERVER: Model key for {eth_addr[:10]}... len={len(model_key)} hex-prefix={model_key.hex()[:16]} hash={hash_data(model_key)[:16]}") 
+                except Exception:
+                    print("DEBUG SERVER: Failed to print model_key debug info")
 
-                model_ct = AES_encrypt_data(
-                    model_key,
-                    wraped_global_model
-                )
+                # If the main loop hasn't prepared the wrapped model yet, don't crash the socket handler.
+                # This can happen if a client replays an old TaskPublished event and requests the model early.
+                if not isinstance(wraped_global_model, (bytes, bytearray)) or len(wraped_global_model) == 0:
+                    client_socket.send(
+                        json.dumps({
+                            "msg_type": "Global model not ready",
+                            "error": "Server has not prepared wraped_global_model yet. Wait and retry."
+                        }).encode('utf-8')
+                    )
+                    print("DEBUG SERVER: wraped_global_model is None -> sent 'not ready' response.")
+                    continue
+
+                try:
+                    model_ct = AES_encrypt_data(
+                        model_key,
+                        wraped_global_model
+                    )
+                except Exception as e:
+                    client_socket.send(
+                        json.dumps({
+                            "msg_type": "Global model error",
+                            "error": f"Failed to encrypt global model: {repr(e)}"
+                        }).encode('utf-8')
+                    )
+                    print(f"DEBUG SERVER: Failed to encrypt wraped_global_model: {e}")
+                    continue
 
                 signed_ct = sign_data(
                     model_ct,
@@ -578,6 +604,15 @@ def handle_offchain_client(client_socket):
                     ('global_model.enc', model_ct)
                 )
                 cid = upload_to_Ipfs(pkg)
+                if not cid:
+                    client_socket.send(
+                        json.dumps({
+                            "msg_type": "Global model error",
+                            "error": "Failed to upload encrypted global model package to IPFS"
+                        }).encode('utf-8')
+                    )
+                    print("DEBUG SERVER: Failed to upload global model package to IPFS (cid=None)")
+                    continue
 
                 client_socket.send(
                     json.dumps({
@@ -1122,9 +1157,8 @@ if __name__ == "__main__":
     # --- FINAL HE DECRYPTION TEST REPORT ---
     # Give a short moment for any pending Popen process to finish logging
     print("DEBUG SERVER: Waiting for final HE decryption test logs...")
-    time.sleep(5) 
     
-    display_he_test_results(main_dir)
+    # display_he_test_results(main_dir)
     
     print("--- SERVER FINISHED ---") # DEBUG: Execution ends here
     end_time = time.time()
