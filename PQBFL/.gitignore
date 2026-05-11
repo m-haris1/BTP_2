@@ -1,1 +1,21 @@
 ID_used.txt
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Debug artifacts
+debug/
+
+# Metrics and experiment outputs
+metrics/
+
+# Generated HE/model files
+server/files/local models/
+server/files/global_HE_model.bin
+
+# Temporary binaries
+*.bin
+*.pkl
+*.log
+*.csv

@@ -123,31 +123,85 @@ def task_completed(task_id, project_id):
 def listen_for_projcet():
     global contract
     print("Listen for project...")
-    while True:
+    # Diagnostic: print chain and block so you can verify all processes use same RPC
+    try:
+        print(f"DEBUG: chain_id={w3.eth.chain_id}, block_number={w3.eth.block_number}")
+    except Exception:
+        pass
+
+    # First, try a short historical scan to catch recently emitted events the client may have missed
+    try:
+        latest = w3.eth.block_number
+        from_block = max(0, latest - 200)
+        print(f"DEBUG CLIENT: Scanning ProjectRegistered events from blocks {from_block}..{latest}")
         try:
-            task_event_filter = contract.events.ProjectRegistered.create_filter(fromBlock="latest")
-            events = task_event_filter.get_all_entries()
+            events = contract.events.ProjectRegistered().getLogs(fromBlock=from_block, toBlock=latest)
+        except Exception:
+            # Fallback: create filter and fetch entries
+            f = contract.events.ProjectRegistered.create_filter(fromBlock=from_block, toBlock=latest)
+            events = f.get_all_entries()
+            try:
+                w3.eth.uninstall_filter(f.filter_id)
+            except Exception:
+                pass
+
+        if events:
+            # Prefer the most recent ProjectRegistered event in the scanned range.
+            try:
+                events_sorted = sorted(events, key=lambda e: (e.get('blockNumber', 0), e['args'].get('project_id', 0)))
+            except Exception:
+                events_sorted = events
+            ev = events_sorted[-1]
+            try:
+                found_ids = [e['args'].get('project_id') for e in events_sorted]
+                print(f"DEBUG CLIENT: Historic ProjectRegistered events found (project_ids={found_ids}), selecting latest {ev['args'].get('project_id')}")
+            except Exception:
+                pass
+            project_id = ev['args']['project_id']
+            cnt_clients = ev['args']['cnt_clients']
+            server_address = ev['args']['serverAddress']
+            creation_time = time.gmtime(int(ev['args']['transactionTime'])) if 'transactionTime' in ev['args'] else time.gmtime()
+            initial_model_hash = ev['args'].get('hash_init_model')
+            server_hash_pubkeys = ev['args'].get('hash_keys')
+            tx_hash = ev['transactionHash']
+            print('Received Project Info (historic):')
+            print(f'    Project ID: {project_id}')
+            print(f'    Server address: {server_address}')
+            print(f'    required client count: {cnt_clients}')
+            print(f'    Time: {time.strftime("%Y-%m-%d %H:%M:%S (UTC)", creation_time)}')
+            print(f'    Hash_pubkeys: {server_hash_pubkeys}')
+            print('-' * 75)
+            return tx_hash, project_id, server_address, cnt_clients, initial_model_hash, server_hash_pubkeys
+    except Exception as e:
+        print(f"DEBUG CLIENT: Historic scan failed: {e}")
+
+    # If historic scan didn't find anything, fall back to live event listening
+    try:
+        task_event_filter = contract.events.ProjectRegistered.create_filter(fromBlock="latest")
+        print("DEBUG CLIENT: No historic ProjectRegistered found; listening for new events...")
+        while True:
+            events = task_event_filter.get_new_entries()
             if events:
-                ev = events[0]
+                events = sorted(events, key=lambda e: e['args']['project_id'])
+                ev = events[-1]
                 project_id = ev['args']['project_id']
                 cnt_clients = ev['args']['cnt_clients']
                 server_address = ev['args']['serverAddress']
-                creation_time = time.gmtime(int(ev['args']['transactionTime']))
-                initial_model_hash = ev['args']['hash_init_model']
-                server_hash_pubkeys = ev['args']['hash_keys']
+                creation_time = time.gmtime(int(ev['args']['transactionTime'])) if 'transactionTime' in ev['args'] else time.gmtime()
+                initial_model_hash = ev['args'].get('hash_init_model')
+                server_hash_pubkeys = ev['args'].get('hash_keys')
                 tx_hash = ev['transactionHash']
                 print('Received Project Info:')
-                print(f'    Poject ID: {project_id}')
+                print(f'    Project ID: {project_id}')
                 print(f'    Server address: {server_address}')
                 print(f'    required client count: {cnt_clients}')
                 print(f'    Time: {time.strftime("%Y-%m-%d %H:%M:%S (UTC)", creation_time)}')
                 print(f'    Hash_pubkeys: {server_hash_pubkeys}')
                 print('-' * 75)
                 return tx_hash, project_id, server_address, cnt_clients, initial_model_hash, server_hash_pubkeys
-        except Exception as e:
-            print(f"Error fetching project events: {e}")
-            break
-        time.sleep(1)
+            time.sleep(1)
+    except Exception as e:
+        print(f"Error fetching project events: {e}")
     return None, None, None, None, None, None
 
 
